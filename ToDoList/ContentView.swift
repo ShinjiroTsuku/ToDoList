@@ -19,11 +19,11 @@ struct ContentView: View {
                     taskData[index].completed.toggle()
                 } label: {
                     HStack {
-                        Image(systemName: taskData[index].completed ? "circle" : "checkmark.circle.fill")
+                        Image(systemName: taskData[index].completed ? "checkmark.circle.fill" : "circle")
                         Text(taskData[index].title)
                     }
                 }
-                .foregroundColor(.black)
+                .foregroundColor(.primary)
             }
             .navigationTitle("ToDoList")
         }
