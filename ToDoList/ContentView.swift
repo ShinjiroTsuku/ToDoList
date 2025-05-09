@@ -8,14 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var taskData = [(title: "jog", completed: false),
+                           (title: "water flowers", completed: false),
+                           (title: "clean room", completed: false),
+                           (title: "read a book", completed: false)]
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, iPhone12!")
+        NavigationStack {
+            List(0..<taskData.count, id:\.self) {index in
+                Button {
+                    taskData[index].completed.toggle()
+                } label: {
+                    HStack {
+                        Image(systemName: taskData[index].completed ? "circle" : "checkmark.circle.fill")
+                        Text(taskData[index].title)
+                    }
+                }
+                .foregroundColor(.black)
+            }
+            .navigationTitle("ToDoList")
         }
-        .padding()
     }
 }
 
